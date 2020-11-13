@@ -20,7 +20,6 @@ pub use branch::{PoseidonBranch, PoseidonLevel};
 mod annotation;
 mod branch;
 
-#[cfg(feature = "std")]
 /// Zero-Knowledge implementations for the poseidon tree
 pub mod zk;
 
@@ -100,7 +99,6 @@ where
 
         Self { inner }
     }
-    #[cfg(feature = "std")]
     /// Append a leaf to the tree. Return the index of the appended leaf.
     ///
     /// Will call the `tree_pos_mut` implementation of the leaf to
@@ -124,14 +122,12 @@ where
 
         Ok(size)
     }
-    #[cfg(feature = "std")]
     /// Fetch, remove and return the last inserted leaf, if present.
     pub fn pop(&mut self) -> Result<Option<L>> {
         self.inner
             .pop()
             .map_err(|e| anyhow!("Error pop from the tree: {:?}", e))
     }
-    #[cfg(feature = "std")]
     /// Fetch a leaf on a provided index.
     pub fn get(&self, n: usize) -> Result<Option<L>> {
         self.inner
@@ -141,7 +137,6 @@ where
                 anyhow!("Error fetching the Nth item from the tree: {:?}", e)
             })
     }
-    #[cfg(feature = "std")]
     /// Return a full merkle opening for this poseidon tree for a given index.
     pub fn branch(&self, n: usize) -> Result<Option<PoseidonBranch<DEPTH>>> {
         let branch = self.inner.nth::<DEPTH>(n as u64).map_err(|e| {
@@ -153,12 +148,10 @@ where
             None => Ok(None),
         }
     }
-    #[cfg(feature = "std")]
     /// Return the current root/state of the tree.
     pub fn root(&self) -> Result<BlsScalar> {
         self.branch(0).map(|b| b.unwrap_or_default().root())
     }
-    #[cfg(feature = "std")]
     /// Iterates over the tree, provided its annotation implements [`PoseidonWalkableAnnotation`]
     pub fn iter_walk<D: Clone>(
         &self,
@@ -171,7 +164,6 @@ where
     }
 }
 
-#[cfg(feature = "std")]
 /// Main iterator of the poseidon tree.
 ///
 /// Depends on an implementation of `PoseidonWalkableAnnotation` for the tree annotation
@@ -193,7 +185,6 @@ where
     data: D,
 }
 
-#[cfg(feature = "std")]
 impl<L, A, S, D, const DEPTH: usize> PoseidonTreeIterator<L, A, S, D, DEPTH>
 where
     L: PoseidonLeaf<S>,
@@ -219,7 +210,6 @@ where
     }
 }
 
-#[cfg(feature = "std")]
 impl<L, A, S, D, const DEPTH: usize> Iterator
     for PoseidonTreeIterator<L, A, S, D, DEPTH>
 where

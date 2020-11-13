@@ -5,7 +5,6 @@
 // Copyright (c) DUSK NETWORK. All rights reserved.
 
 pub use cipher::PoseidonCipher;
-#[cfg(feature = "std")]
 pub use error::CipherError;
 
 /// Maximum number of scalars allowed per message
@@ -26,13 +25,11 @@ pub const ENCRYPTED_DATA_SIZE: usize = CIPHER_SIZE * 32;
 /// [`PoseidonCipher`] definition
 pub mod cipher;
 
-#[cfg(feature = "std")]
 /// Error definition for the cipher generation process
 pub mod error;
 
 #[cfg(test)]
 mod tests;
 
-#[cfg(feature = "std")]
 /// Plonk gadget for Poseidon encryption
 pub mod zk;
