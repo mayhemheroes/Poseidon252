@@ -21,3 +21,5 @@ FROM --platform=linux/amd64 rustlang/rust:nightly
 COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/sponge_hash /
 
 COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/encrypt /
+
+COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/encrypt_decrypt /
