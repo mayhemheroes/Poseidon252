@@ -23,3 +23,5 @@ COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/sp
 COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/encrypt /
 
 COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/encrypt_decrypt /
+
+COPY --from=builder /Poseidon252/fuzz/target/x86_64-unknown-linux-gnu/release/decrypt_fail /

@@ -57,6 +57,7 @@ jobs:
         - mayhem/sponge_hash.mayhemfile
         - mayhem/encrypt.mayhemfile
         - mayhem/encrypt_decrypt.mayhemfile
+        - mayhem/decrypt_fail.mayhemfile
     steps:
     - uses: actions/checkout@v3
     - name: Start analysis for ${{ matrix.mayhemfile }}
