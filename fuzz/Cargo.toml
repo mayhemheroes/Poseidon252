@@ -11,6 +11,7 @@ cargo-fuzz = true
 [dependencies]
 libfuzzer-sys = "0.4"
 dusk-bls12_381 = { version = "0.11", default-features = false }
+dusk-jubjub = { version = "0.12", default-features = false }
 
 [dependencies.dusk-poseidon]
 path = ".."
@@ -22,5 +23,11 @@ members = ["."]
 [[bin]]
 name = "sponge_hash"
 path = "fuzz_targets/sponge_hash.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "encrypt"
+path = "fuzz_targets/encrypt.rs"
 test = false
 doc = false
