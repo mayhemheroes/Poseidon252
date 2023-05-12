@@ -1,0 +1,6 @@
+project: Poseidon252
+target: sponge_hash
+duration: 300
+
+cmds:
+  - cmd: /sponge_hash
