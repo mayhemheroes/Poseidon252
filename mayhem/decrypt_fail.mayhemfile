@@ -1,0 +1,6 @@
+project: Poseidon252
+target: decrypt_fail
+duration: 300
+
+cmds:
+  - cmd: /decrypt_fail

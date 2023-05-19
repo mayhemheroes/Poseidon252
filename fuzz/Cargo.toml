@@ -1,0 +1,45 @@
+[package]
+name = "Poseidon252-fuzz"
+version = "0.1.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+dusk-bls12_381 = { version = "0.11", default-features = false }
+dusk-jubjub = { version = "0.12", default-features = false }
+
+[dependencies.dusk-poseidon]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "sponge_hash"
+path = "fuzz_targets/sponge_hash.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "encrypt"
+path = "fuzz_targets/encrypt.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "encrypt_decrypt"
+path = "fuzz_targets/encrypt_decrypt.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "decrypt_fail"
+path = "fuzz_targets/decrypt_fail.rs"
+test = false
+doc = false

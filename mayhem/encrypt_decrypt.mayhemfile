@@ -1,0 +1,6 @@
+project: Poseidon252
+target: encrypt_decrypt
+duration: 300
+
+cmds:
+  - cmd: /encrypt_decrypt
